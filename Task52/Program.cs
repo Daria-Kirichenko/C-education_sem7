@@ -37,24 +37,25 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int SummaryOfColumns(int[,] matrix)
+int m = ReadNumber("Введите количество строк: ");
+int n = ReadNumber("Введите количество столбцов:");
+
+int[] SummaryOfColumns(int[,] matrix)
 {
-    int sum = 0;
+    int[] sum = new int [n];
     for(int j = 0; j < matrix.GetLength(1); j++)
     {
         for(int i = 0; i < matrix.GetLength(0); i++)
         {
-            sum += matrix[i, j];
+            sum[j] = matrix[i, j]++;
+            j++;
         }
     }
     return sum;
 }
 
-int m = ReadNumber("Введите количество строк: ");
-int n = ReadNumber("Введите количество столбцов:");
-
 int[,] myMatrix = GetNewMatrix(m, n);
 PrintMatrix(myMatrix);
-int summary = SummaryOfColumns(myMatrix);
-Console.WriteLine(summary);
+int[] summary = SummaryOfColumns(myMatrix);
+Console.WriteLine($"{string.Join(", ", summary)}");
 
