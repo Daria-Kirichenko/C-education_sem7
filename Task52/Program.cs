@@ -37,56 +37,24 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
+int SummaryOfColumns(int[,] matrix)
+{
+    int sum = 0;
+    for(int j = 0; j < matrix.GetLength(1); j++)
+    {
+        for(int i = 0; i < matrix.GetLength(0); i++)
+        {
+            sum += matrix[i, j];
+        }
+    }
+    return sum;
+}
 
 int m = ReadNumber("Введите количество строк: ");
 int n = ReadNumber("Введите количество столбцов:");
 
 int[,] myMatrix = GetNewMatrix(m, n);
 PrintMatrix(myMatrix);
+int summary = SummaryOfColumns(myMatrix);
+Console.WriteLine(summary);
 
-
-void SummaryOfColumns(int[,] matrix)
-{
-    int [] sum = new int[n];
-    for(int j = 0; j < matrix.GetLength(1); j++)
-    {
-        for(int i = 0; i < matrix.GetLength(0); i++)
-        {
-            int index = j;
-            sum[index] = matrix[i, 0]++;
-        }
-        Console.WriteLine($"[{string.Join(", ", sum)}]");
-    }
-}
-
-SummaryOfColumns(myMatrix);
-
-// double AverageOfColumns(int[,] matrix)
-// {
-//     double[] averages = new double[myMatrix.GetLength(1)];
-//     int summary = 0;
-//     for(int j = 0; j < matrix.GetLength(1); j++)
-//     {
-//         for(int i = 0; i < matrix.GetLength(0); i++)
-//         {
-//             summary = matrix[0, j]++;   
-//         }
-        
-//     }
-//     return summary;
-// }
-    
-    
-//     for(int j = 0; j < averages.Length; j++)
-//     {
-//         Console.WriteLine($"Среднее арифметическое столбца {j} равно {averages}");
-//     }
-// }
-
-// double sum = AverageOfColumns(myMatrix);
-
-
-// int sum = SummaryOfColumns(myMatrix);
-// Console.Write(sum + " ");
-// double avg = sum / m;
-// Console.WriteLine(sum);
